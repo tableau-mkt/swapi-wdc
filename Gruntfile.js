@@ -70,7 +70,7 @@ module.exports = function(grunt) {
             name: 'Travis Deployment',
             email: 'noreply@travis-ci.org'
           },
-          repo: 'https://' + process.env.GH_TOKEN + '@github.com/repo-owner/star-wars-api-connector.git',
+          repo: 'https://' + process.env.GH_TOKEN + '@github.com/tableau-mkt/swapi-wdc.git',
           message: 'Auto-deploy via Travis CI',
           silent: true
         },

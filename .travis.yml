@@ -14,8 +14,7 @@ node_js:
 # @see Gruntfile.js
 env:
   global:
-    # GH_TOKEN: yourGithubApiTokenHere
-    # secure: y0urg1thub4pit0k3nh3r3=
+    secure: "dBrwbMIC0CXl6lXX8Txqo8PC7b6p5gmb4czHsYJTTsONhyvlCC0CVzGptLL+z50z474t2Q7uOFp5wXAu/TXI9DKooFxX4uDgmHyePqlix3QDrzcdVS5wH7uX3akRxonMQO1Uiz0FsVVr+hdzyQlpmRvOaITUz6AyYgPHaTUcSwKLNWV95mriCkHf8u6m5AwUnqBEAdJvt409L437MaV5DYbFza8XZ5eR7wgMqjxuDhG04zI0Tfs06WBkCTG2efYefZQCk0K9D5LzeNLZXarlkz9EAQ3RGz+7aGgAvAmuEbJdMHZspvtq5cprtVN4xWT4i8IGTOleNi5p+GqGuUqBu6G6Vn7L01L3P50zdsEYaZmogUZDp8oO4FQAKm7DSJJSWXYOlNo4ORHR+bnp3z5GyIamhPNss6eJi+sZzkom/FHN8zgATCv9Ii2nxTtK3A785QDMvJ2J0TTLrg9Kmfz8adOtTfI0wryKL2LFO5cNcGPRM65ulTSv6eeRnCQpBcbX0i6w2B1YTQLbUF9jLzNQMN9iEm4kBsk6ZHP0JTd/c1m6DsGl+eQVNwuH/iULBQbVNyJhJ2/ueCeGyuSzjVB2bTGv8ZR6P7FcKs6GJcsnhR0f79zLg5Eyj2d50ExmyFA0by4Hp15yFKBc4m8cYC/fYaDKzAaJjMys04YZugibwIA="
 
 before_install:
   - npm install -g grunt-cli
