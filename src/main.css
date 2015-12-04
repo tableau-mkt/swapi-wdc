@@ -1,0 +1,83 @@
+a,
+a:hover,
+a:active {
+    color: #fffff4;
+}
+
+/**
+ * Custom default button
+ */
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
+    color: #fff;
+    background-color: #ee9048;
+    border: .05rem solid #fff;
+}
+
+/**
+ * Base structure
+ */
+html,
+body {
+    height: 100%;
+}
+body,
+section.jumbotron {
+    color: #fff;
+    background-color: #335b82;
+}
+
+/**
+ * From album.css
+ */
+.navbar {
+    margin-bottom: 0;
+}
+
+.navbar-collapse .container-fluid {
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid #95abbe;
+}
+
+.navbar-collapse h4 {
+    color: #95abbe;
+}
+
+.navbar-collapse .text-muted {
+    color: #fffff4;
+}
+
+.about {
+    float: left;
+    max-width: 30rem;
+    margin-right: 3rem;
+}
+
+.social a {
+    font-weight: 500;
+    color: #eceeef;
+}
+.social a:hover {
+    color: #fff;
+}
+
+.jumbotron {
+    padding-top: 4rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    background-color: #fff;
+}
+
+.jumbotron p:last-child {
+    margin-bottom: 0;
+}
+
+.jumbotron-heading {
+    font-weight: 300;
+    margin-bottom: 1em;
+}
+
+.jumbotron .container {
+    max-width: 40rem;
+}

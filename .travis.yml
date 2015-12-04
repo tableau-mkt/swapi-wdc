@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - '0.12'
+
+# In order to deploy to GitHub pages, we need to prove to GitHub that we're
+# allowed to push commits up to our git repo. We do this with an API token.
+# Because the key is sensitive, we need to encrypt it before committing it. In
+# order to do so, run the following in your command line:
+#   travis encrypt GH_TOKEN=yourGithubApiTokenHere --add env.global
+#
+# Create/retrieve a GitHub API token here: https://github.com/settings/tokens
+# The only scope you should need is "repo" and/or "public_repo"
+#
+# @see Gruntfile.js
+env:
+  global:
+    # GH_TOKEN: yourGithubApiTokenHere
+    # secure: y0urg1thub4pit0k3nh3r3=
+
+before_install:
+  - npm install -g grunt-cli
+
+script:
+  - npm test
+
+after_success:
+  # Run grunt autoDeploy if we're building a commit on the master branch.
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && grunt autoDeploy
