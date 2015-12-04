@@ -24,6 +24,9 @@ module.exports = function(grunt) {
           'bower_components/jquery/dist/jquery.js',
           'bower_components/tableau/dist/*.js',
           'bower_components/bootstrap/dist/js/bootstrap.js',
+          'src/swapi.min.js',
+          'src/columnHeaders.js',
+          'src/util.js',
           'src/wrapper.js',
           'src/**/*.js'
         ],

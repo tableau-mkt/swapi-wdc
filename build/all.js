@@ -14033,6 +14033,238 @@ var Popover = (function ($) {
 })(jQuery);
 
 }(jQuery);
+;var swapiModule=function(){function a(a,b){function c(a){(4==d.readyState||"load"===a.type)&&(d.status&&200!=d.status||b(JSON.parse(d.responseText)))}var d;window.XDomainRequest?(d=new XDomainRequest,d.open("get",a,!0),d.timeout=3e4):(d=new XMLHttpRequest,d.open("get",a,!0),d.setRequestHeader("User-Agent","swapi-javascript"),d.setRequestHeader("Accept","application/json")),d.onload=c,setTimeout(function(){d.send()},0)}function b(b){a(e,b)}function c(b){return function(c,d){a(e+b+"/"+c+"/",d)}}function d(b){return function(){1===arguments.length?a(e+b+"/",arguments[0]):a(e+b+"/?page="+arguments[0],arguments[1])}}var e="http://swapi.co/api/";return{getResources:b,getPerson:c("people"),getPeople:d("people"),getFilm:c("films"),getFilms:d("films"),getPlanet:c("planets"),getPlanets:d("planets"),getSpecies:c("species"),getAllSpecies:d("species"),getStarship:c("starships"),getStarships:d("starships"),getVehicle:c("vehicles"),getVehicles:d("vehicles")}}();
+;var StarWarsMeta = {};
+
+/**
+ * Star Wars People (http://swapi.co/api/people)
+ */
+StarWarsMeta.people = function() {
+  return {
+    "birth_year": "string",
+    "eye_color": "string",
+    "films": "string",
+    "gender": "string",
+    "hair_color": "string",
+    "height": "int",
+    "homeworld": "string",
+    "mass": "int",
+    "name": "string",
+    "skin_color": "string",
+    "created": "datetime",
+    "edited": "datetime",
+    "species": "string",
+    "starships": "string",
+    "url": "string",
+    "vehicles": "string"
+  }
+};
+
+/**
+ * Star Wars Films (http://swapi.co/api/films)
+ */
+StarWarsMeta.films = function() {
+  return {
+    "characters": "string",
+    "created": "datetime",
+    "director": "string",
+    "edited": "datetime",
+    "episode_id": "int",
+    "opening_crawl": "string",
+    "planets": "string",
+    "producer": "string",
+    "release_date": "datetime",
+    "species": "string",
+    "starships": "string",
+    "title": "string",
+    "url": "string",
+    "vehicles": "string"
+  }
+};
+
+/**
+ * Star Wars Planets (http://swapi.co/api/planets)
+ */
+StarWarsMeta.planets = function() {
+  return {
+    "climate": "string",
+    "created": "datetime",
+    "diameter": "int",
+    "edited": "datetime",
+    "films": "string",
+    "gravity": "float",
+    "name": "string",
+    "orbital_period": "int",
+    "population": "int",
+    "residents": "string",
+    "rotation_period": "int",
+    "surface_water": "int",
+    "terrain": "string",
+    "url": "string"
+  }
+};
+
+/**
+ * Star Wars Species (http://swapi.co/api/species)
+ */
+StarWarsMeta.species = function() {
+  return {
+    "average_height": "float",
+    "average_lifespan": "int",
+    "classification": "string",
+    "created": "datetime",
+    "designation": "string",
+    "edited": "datetime",
+    "eye_colors": "string",
+    "hair_colors": "string",
+    "homeworld": "string",
+    "language": "string",
+    "name": "string",
+    "people": "string",
+    "films": "string",
+    "skin_colors": "gray",
+    "url": "string"
+  }
+};
+
+/**
+ * Star Wars Starships (http://swapi.co/api/starships)
+ */
+StarWarsMeta.starships = function() {
+  return {
+    "MGLT": "string",
+    "cargo_capacity": "int",
+    "consumables": "string",
+    "cost_in_credits": "int",
+    "created": "datetime",
+    "crew": "int",
+    "edited": "datetime",
+    "hyperdrive_rating": "float",
+    "length": "float",
+    "manufacturer": "string",
+    "max_atmosphering_speed": "int",
+    "model": "string",
+    "name": "string",
+    "passengers": "int",
+    "films": "string",
+    "pilots": "string",
+    "starship_class": "string",
+    "url": "string"
+  }
+};
+
+/**
+ * Star Wars Vehicles (http://swapi.co/api/vehicles)
+ */
+StarWarsMeta.vehicles = function() {
+  return {
+    "cargo_capacity": "int",
+    "consumables": "string",
+    "cost_in_credits": "int",
+    "created": "datetime",
+    "crew": "int",
+    "edited": "datetime",
+    "length": "float",
+    "manufacturer": "string",
+    "max_atmosphering_speed": "int",
+    "model": "string",
+    "name": "string",
+    "passengers": "int",
+    "pilots": "string",
+    "films": "string",
+    "url": "string",
+    "vehicle_class": "string"
+  }
+};
+;(function() {
+  util = {};
+
+  /**
+   * Checks if a given variable is an array.
+   */
+  util.isArray = ('isArray' in Array) ?
+    Array.isArray :
+    function (value) {
+      return Object.prototype.toString.call(value) === '[object Array]';
+    };
+
+  /**
+   * Create an array with a defined length of default values.
+   *
+   * @param {Object|string|number} value
+   * @param {number} length
+   * @returns {Array}
+   */
+  Array.prototype.repeat = function (value, length) {
+    while (length) this[--length] = value;
+    return this;
+  };
+
+  /**
+   * Flattens our data into an object with unique property names.
+   *
+   * @param {object} obj
+   *  The object that contains all the data.
+   * @return {object} result
+   */
+  util.flattenData = function (obj) {
+    var result = {};
+
+    // Flatten our (nested) object.
+    flatten(obj, '', function (key, item) {
+      result[key] = item;
+    });
+
+    return result;
+  };
+
+  /**
+   * Flattens our metadata into an associative array [{'name': 'Column_1', 'type': 'String'}]
+   *
+   * @param {object} obj
+   *  The object that contains all the metadata (name and type).
+   * @return {Array} result
+   */
+  util.flattenHeaders = function (obj) {
+    var result = [];
+
+    // Flatten our (nested) object.
+    flatten(obj, '', function (key, item) {
+      result.push({
+        'name': key,
+        'type': item
+      });
+    });
+
+    return result;
+  };
+
+// Private helper methods.
+  function flatten(obj, ancestor, callback) {
+    var item, key, parent;
+
+    for (key in obj) {
+      if (!obj.hasOwnProperty(key)) continue;
+
+      item = obj[key];
+
+      if (util.isArray(item)) {
+        // Arrays are a special case and should be handled within Tableau.
+        // We transform them back into JSON.
+        item = JSON.stringify(item);
+      }
+      else if (typeof item === 'object') {
+        parent = ancestor + key + '.';
+        flatten(item, parent, callback);
+
+        continue;
+      }
+
+      key = ancestor + key;
+      callback(key, item);
+    }
+  }
+})();
 ;/**
  * @file
  *   A utility that wraps the Tableau Web Data Connector API into something with
@@ -14356,148 +14588,6 @@ var wdcw = window.wdcw || {};
   });
 
 })(jQuery, tableau, wdcw);
-;var StarWarsMeta = {};
-
-/**
- * Star Wars People (http://swapi.co/api/people)
- */
-StarWarsMeta.people = function() {
-  return {
-    "birth_year": "string",
-    "eye_color": "string",
-    "films": "string",
-    "gender": "string",
-    "hair_color": "string",
-    "height": "int",
-    "homeworld": "string",
-    "mass": "int",
-    "name": "string",
-    "skin_color": "string",
-    "created": "datetime",
-    "edited": "datetime",
-    "species": "string",
-    "starships": "string",
-    "url": "string",
-    "vehicles": "string"
-  }
-};
-
-/**
- * Star Wars Films (http://swapi.co/api/films)
- */
-StarWarsMeta.films = function() {
-  return {
-    "characters": "string",
-    "created": "datetime",
-    "director": "string",
-    "edited": "datetime",
-    "episode_id": "int",
-    "opening_crawl": "string",
-    "planets": "string",
-    "producer": "string",
-    "release_date": "datetime",
-    "species": "string",
-    "starships": "string",
-    "title": "string",
-    "url": "string",
-    "vehicles": "string"
-  }
-};
-
-/**
- * Star Wars Planets (http://swapi.co/api/planets)
- */
-StarWarsMeta.planets = function() {
-  return {
-    "climate": "string",
-    "created": "datetime",
-    "diameter": "int",
-    "edited": "datetime",
-    "films": "string",
-    "gravity": "float",
-    "name": "string",
-    "orbital_period": "int",
-    "population": "int",
-    "residents": "string",
-    "rotation_period": "int",
-    "surface_water": "int",
-    "terrain": "string",
-    "url": "string"
-  }
-};
-
-/**
- * Star Wars Species (http://swapi.co/api/species)
- */
-StarWarsMeta.species = function() {
-  return {
-    "average_height": "float",
-    "average_lifespan": "int",
-    "classification": "string",
-    "created": "datetime",
-    "designation": "string",
-    "edited": "datetime",
-    "eye_colors": "string",
-    "hair_colors": "string",
-    "homeworld": "string",
-    "language": "string",
-    "name": "string",
-    "people": "string",
-    "films": "string",
-    "skin_colors": "gray",
-    "url": "string"
-  }
-};
-
-/**
- * Star Wars Starships (http://swapi.co/api/starships)
- */
-StarWarsMeta.starships = function() {
-  return {
-    "MGLT": "string",
-    "cargo_capacity": "int",
-    "consumables": "string",
-    "cost_in_credits": "int",
-    "created": "datetime",
-    "crew": "int",
-    "edited": "datetime",
-    "hyperdrive_rating": "float",
-    "length": "float",
-    "manufacturer": "string",
-    "max_atmosphering_speed": "int",
-    "model": "string",
-    "name": "string",
-    "passengers": "int",
-    "films": "string",
-    "pilots": "string",
-    "starship_class": "string",
-    "url": "string"
-  }
-};
-
-/**
- * Star Wars Vehicles (http://swapi.co/api/vehicles)
- */
-StarWarsMeta.vehicles = function() {
-  return {
-    "cargo_capacity": "int",
-    "consumables": "string",
-    "cost_in_credits": "int",
-    "created": "datetime",
-    "crew": "int",
-    "edited": "datetime",
-    "length": "float",
-    "manufacturer": "string",
-    "max_atmosphering_speed": "int",
-    "model": "string",
-    "name": "string",
-    "passengers": "int",
-    "pilots": "string",
-    "films": "string",
-    "url": "string",
-    "vehicle_class": "string"
-  }
-};
 ;/*jshint -W079 */
 /*jshint -W082 */
 var module = module || {},
@@ -14629,93 +14719,3 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
 
 // Set the global wdcw variable as expected.
 wdcw = module.exports(jQuery, tableau, wdcw, StarWarsMeta, swapiModule);
-;var swapiModule=function(){function a(a,b){function c(a){(4==d.readyState||"load"===a.type)&&(d.status&&200!=d.status||b(JSON.parse(d.responseText)))}var d;window.XDomainRequest?(d=new XDomainRequest,d.open("get",a,!0),d.timeout=3e4):(d=new XMLHttpRequest,d.open("get",a,!0),d.setRequestHeader("User-Agent","swapi-javascript"),d.setRequestHeader("Accept","application/json")),d.onload=c,setTimeout(function(){d.send()},0)}function b(b){a(e,b)}function c(b){return function(c,d){a(e+b+"/"+c+"/",d)}}function d(b){return function(){1===arguments.length?a(e+b+"/",arguments[0]):a(e+b+"/?page="+arguments[0],arguments[1])}}var e="http://swapi.co/api/";return{getResources:b,getPerson:c("people"),getPeople:d("people"),getFilm:c("films"),getFilms:d("films"),getPlanet:c("planets"),getPlanets:d("planets"),getSpecies:c("species"),getAllSpecies:d("species"),getStarship:c("starships"),getStarships:d("starships"),getVehicle:c("vehicles"),getVehicles:d("vehicles")}}();
-;(function() {
-  util = {};
-
-  /**
-   * Checks if a given variable is an array.
-   */
-  util.isArray = ('isArray' in Array) ?
-    Array.isArray :
-    function (value) {
-      return Object.prototype.toString.call(value) === '[object Array]';
-    };
-
-  /**
-   * Create an array with a defined length of default values.
-   *
-   * @param {Object|string|number} value
-   * @param {number} length
-   * @returns {Array}
-   */
-  Array.prototype.repeat = function (value, length) {
-    while (length) this[--length] = value;
-    return this;
-  };
-
-  /**
-   * Flattens our data into an object with unique property names.
-   *
-   * @param {object} obj
-   *  The object that contains all the data.
-   * @return {object} result
-   */
-  util.flattenData = function (obj) {
-    var result = {};
-
-    // Flatten our (nested) object.
-    flatten(obj, '', function (key, item) {
-      result[key] = item;
-    });
-
-    return result;
-  };
-
-  /**
-   * Flattens our metadata into an associative array [{'name': 'Column_1', 'type': 'String'}]
-   *
-   * @param {object} obj
-   *  The object that contains all the metadata (name and type).
-   * @return {Array} result
-   */
-  util.flattenHeaders = function (obj) {
-    var result = [];
-
-    // Flatten our (nested) object.
-    flatten(obj, '', function (key, item) {
-      result.push({
-        'name': key,
-        'type': item
-      });
-    });
-
-    return result;
-  };
-
-// Private helper methods.
-  function flatten(obj, ancestor, callback) {
-    var item, key, parent;
-
-    for (key in obj) {
-      if (!obj.hasOwnProperty(key)) continue;
-
-      item = obj[key];
-
-      if (util.isArray(item)) {
-        // Arrays are a special case and should be handled within Tableau.
-        // We transform them back into JSON.
-        item = JSON.stringify(item);
-      }
-      else if (typeof item === 'object') {
-        parent = ancestor + key + '.';
-        flatten(item, parent, callback);
-
-        continue;
-      }
-
-      key = ancestor + key;
-      callback(key, item);
-    }
-  }
-})();
