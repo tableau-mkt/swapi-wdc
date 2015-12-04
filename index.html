@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Star Wars API</title>
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="src/main.css">
+</head>
+<body>
+
+<div class="navbar-collapse collapse inverse" id="navbar-header">
+  <div class="container-fluid">
+    <div class="about">
+      <h4>About</h4>
+      
+                <p class="text-muted">Add some information about your web data connector,
+          the service you're connecting to, your affiliation to it, or any other
+          background context. As always, provide contact information or social
+          links so people can report issues.
+        </p>
+
+      
+    </div>
+    <div class="social">
+      <h4>Contact</h4>
+      <ul class="list-unstyled">
+        <li><a href="mailto:#">Email</a></li>
+        <li><a href="#">Follow on Twitter</a></li>
+        <li><a href="#">Connect on LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header">
+      &#9776;
+    </button>
+    <a href="#" class="navbar-brand">Star Wars API</a>
+  </div>
+</div>
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Connect to Star Wars API</h1>
+    
+              <form>
+            
+            
+            
+                <p>
+    <select class="form-control" name="Resource" id="Resource">
+        <option value="">-- Resource --</option>
+        
+            <option value="People">People</option>
+        
+            <option value="Films">Films</option>
+        
+            <option value="Planets">Planets</option>
+        
+            <option value="Species">Species</option>
+        
+            <option value="Starships">Starships</option>
+        
+            <option value="Vehicles">Vehicles</option>
+        
+    </select>
+    <label class="sr-only" for="Resource">Resource</label>
+</p>
+            
+            
+            
+            
+            <div>
+                <input type="submit" value="Connect" class="btn btn-lg btn-primary btn-block" />
+            </div>
+        </form>
+
+    
+  </div>
+</section>
+
+<script src="build/all.min.js"></script>
+</body>
+</html>

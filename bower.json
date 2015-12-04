@@ -1,0 +1,8 @@
+{
+  "name": "star-wars-api",
+  "version": "0.0.0",
+  "dependencies": {
+    "bootstrap": "~4.0.0",
+    "jquery": "~1.11"
+  }
+}
