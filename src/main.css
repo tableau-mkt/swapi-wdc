@@ -1,18 +1,21 @@
 a,
 a:hover,
-a:active {
+a:active,
+a:visited {
     color: #fffff4;
 }
 
 /**
- * Custom default button
+ * Custom default button & form
  */
 .btn-primary,
 .btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:focus,
+select.form-control,
+select.form-control:focus {
     color: #fff;
-    background-color: #ee9048;
-    border: .05rem solid #fff;
+    background-color: #000;
+    border: 2px solid #ff6;
 }
 
 /**
@@ -35,13 +38,18 @@ section.jumbotron {
     margin-bottom: 0;
 }
 
+.navbar-brand {
+    color: #ff6 !important;
+    margin-top: 4px;
+}
+
 .navbar-collapse .container-fluid {
     padding: 2rem 2.5rem;
     border-bottom: 1px solid #95abbe;
 }
 
 .navbar-collapse h4 {
-    color: #95abbe;
+    color: #4bd5ee;
 }
 
 .navbar-collapse .text-muted {
