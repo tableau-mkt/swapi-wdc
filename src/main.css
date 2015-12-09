@@ -18,6 +18,15 @@ select.form-control:focus {
     border: 2px solid #ff6;
 }
 
+select {
+    -webkit-appearance: none;
+}
+
+/* Ensure select option text color is black when selecting */
+select.form-control:active {
+    color: #000;
+}
+
 /**
  * Base structure
  */
