@@ -82,6 +82,14 @@ section.jumbotron {
     max-width: 40rem;
 }
 
+.skip-redo {
+    position: absolute;
+    z-index: 1001;
+    top: 0;
+    right: 0;
+    padding: 1em;
+}
+
 
 
 
