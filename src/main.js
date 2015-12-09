@@ -1,15 +1,41 @@
 /*jshint -W079 */
 /*jshint -W082 */
 var module = module || {},
-    window = window || {},
+    window = window || {location: {href: ''}, history: {pushState: function() {}}},
     jQuery = jQuery || {},
     tableau = tableau || {},
     wdcw = window.wdcw || {},
-    StarWars = window.StarWars || {},
     StarWarsMeta = window.StarWarsMeta || {},
     swapiModule = window.swapiModule || {};
 
 module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
+  // Inspired by Tim Pietrusky's work, timpietrusky.com
+  var StarWarsCrawl = (function() {
+    /*
+     * Constructor
+     */
+    function StarWarsCrawl(args) {
+      // Context wrapper
+      this.el = $(args.el);
+
+      // The animation wrapper
+      this.animation = this.el.find('.animation');
+
+      // Remove animation
+      this.reset();
+    }
+
+    /*
+     * Resets the animation.
+     */
+    StarWarsCrawl.prototype.reset = function() {
+      this.cloned = this.animation.clone(true);
+      this.animation.remove();
+      this.animation = this.cloned;
+    };
+
+    return StarWarsCrawl;
+  })();
 
   /**
    * Run during initialization of the web data connector.
@@ -30,7 +56,7 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
    *   performed.
    */
   wdcw.setup = function setup(phase, setUpComplete) {
-    var delayShow = parseInt(jQuery('.animation .titles > div').css('animation-duration')) + parseInt(jQuery('.animation .titles > div').css('animation-delay')),
+    var delayShow = parseInt($('.animation .titles > div').css('animation-duration')) + parseInt($('.animation .titles > div').css('animation-delay')),
         crawl;
 
     if (phase === tableau.phaseEnum.interactivePhase) {
