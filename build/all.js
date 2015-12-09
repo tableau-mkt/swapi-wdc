@@ -14646,7 +14646,8 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
    *   performed.
    */
   wdcw.setup = function setup(phase, setUpComplete) {
-    var delayShow = parseInt($('.animation .titles > div').css('animation-duration')) + parseInt($('.animation .titles > div').css('animation-delay')),
+    var $skipRedo = $('.skip-redo a'),
+        delayShow = parseInt($('.animation .titles > div').css('animation-duration')) + parseInt($('.animation .titles > div').css('animation-delay')),
         baseUrl = window.location.protocol + '//' + window.location.host,
         crawl;
 
@@ -14667,10 +14668,16 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
         // Immediately push history onto the window so connection edits don't
         // get the crawl.
         window.history.pushState({}, '', baseUrl + window.location.pathname + '?crawlOff');
+        $skipRedo.attr('href', '?crawlOff')
+          .text('Skip')
+          .attr('title', '');
       }
       else {
         $('.starwars').hide();
         $('.jumbotron').fadeIn();
+        $skipRedo.attr('href', baseUrl + window.location.pathname)
+          .text('See it again')
+          .attr('title', 'For the first time...');
       }
     }
 
