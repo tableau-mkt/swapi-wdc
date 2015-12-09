@@ -101,7 +101,7 @@ body {
     font: 700 1em "News Cycle", sans-serif;
     letter-spacing: .15em;
     color: #ff6;
-    background: url('/img/starfield.jpg') #000;
+    background: url('../img/starfield.jpg') #000;
     background-size: cover;
     overflow: hidden;
     margin: 0;
