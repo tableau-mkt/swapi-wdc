@@ -14707,7 +14707,7 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
           films: 'getFilms',
           planets: 'getPlanets',
           species: 'getAllSpecies',
-          starships: 'getAllStarships',
+          starships: 'getStarships',
           vehicles: 'getVehicles'
         };
 
