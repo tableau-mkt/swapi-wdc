@@ -57,6 +57,7 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
    */
   wdcw.setup = function setup(phase, setUpComplete) {
     var delayShow = parseInt($('.animation .titles > div').css('animation-duration')) + parseInt($('.animation .titles > div').css('animation-delay')),
+        baseUrl = window.location.protocol + '//' + window.location.host,
         crawl;
 
     if (phase === tableau.phaseEnum.interactivePhase) {
@@ -75,7 +76,7 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
 
         // Immediately push history onto the window so connection edits don't
         // get the crawl.
-        window.history.pushState({}, '', window.location.origin + '?crawlOff');
+        window.history.pushState({}, '', baseUrl + window.location.pathname + '?crawlOff');
       }
       else {
         $('.starwars').hide();
