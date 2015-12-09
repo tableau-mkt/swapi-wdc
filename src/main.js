@@ -5,10 +5,61 @@ var module = module || {},
     jQuery = jQuery || {},
     tableau = tableau || {},
     wdcw = window.wdcw || {},
+    StarWars = window.StarWars || {},
     StarWarsMeta = window.StarWarsMeta || {},
     swapiModule = window.swapiModule || {};
 
 module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
+
+  /**
+   * Run during initialization of the web data connector.
+   *
+   * @param {string} phase
+   *   The initialization phase. This can be one of:
+   *   - tableau.phaseEnum.interactivePhase: Indicates when the connector is
+   *     being initialized with a user interface suitable for an end-user to
+   *     enter connection configuration details.
+   *   - tableau.phaseEnum.gatherDataPhase: Indicates when the connector is
+   *     being initialized in the background for the sole purpose of collecting
+   *     data.
+   *   - tableau.phaseEnum.authPhase: Indicates when the connector is being
+   *     accessed in a stripped down context for the sole purpose of refreshing
+   *     an OAuth authentication token.
+   * @param {function} setUpComplete
+   *   A callback function that you must call when all setup tasks have been
+   *   performed.
+   */
+  wdcw.setup = function setup(phase, setUpComplete) {
+    var $jumbotron = $('.jumbotron'),
+        delayShow = parseInt(jQuery('.animation .titles > div').css('animation-duration')) + parseInt(jQuery('.animation .titles > div').css('animation-delay')),
+        crawl;
+
+    if (phase === tableau.phaseEnum.interactivePhase) {
+      // Do the Star Wars Crawl unless disabled.
+      if (window.location.href.indexOf('crawlOff') < 0) {
+        // Initiate the crawl.
+        crawl = new StarWarsCrawl({
+          el : '.starwars'
+        });
+        crawl.el.append(crawl.animation);
+
+        // In the set amount of time, show the fields.
+        setTimeout(function() {
+          $jumbotron.fadeOut().fadeIn();
+        }, delayShow * 1000);
+
+        // Immediately push history onto the window so connection edits don't
+        // get the crawl.
+        window.history.pushState({}, '', window.location.origin + '?crawlOff=1');
+      }
+      else {
+        $('.starwars').hide();
+        $jumbotron.fadeIn();
+      }
+    }
+
+    setUpComplete();
+  };
 
   /**
    * Primary method called when Tableau is asking for the column headers that

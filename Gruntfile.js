@@ -28,6 +28,7 @@ module.exports = function(grunt) {
           'src/columnHeaders.js',
           'src/util.js',
           'src/wrapper.js',
+          'src/crawl.js',
           'src/**/*.js'
         ],
         dest: 'build/all.js'

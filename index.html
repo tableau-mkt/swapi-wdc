@@ -14,14 +14,11 @@
   <div class="container-fluid">
     <div class="about">
       <h4>About</h4>
-      
-                <p class="text-muted">Add some information about your web data connector,
-          the service you're connecting to, your affiliation to it, or any other
-          background context. As always, provide contact information or social
-          links so people can report issues.
-        </p>
-
-      
+      <p class="text-muted">Add some information about your web data connector,
+        the service you're connecting to, your affiliation to it, or any other
+        background context. As always, provide contact information or social
+        links so people can report issues.
+      </p>
     </div>
     <div class="social">
       <h4>Contact</h4>
@@ -43,43 +40,74 @@
   </div>
 </div>
 
-<section class="jumbotron text-center">
+<article class="starwars">
+    <!--<section class="start">
+        <p>
+            Start <br> <span>Star Wars opening crawl</span> <br> from 1977
+            <br>
+            <span>Remake by Tim Pietrusky</span>
+        </p>
+    </section>-->
+
+    <div class="animation">
+
+        <section class="intro">
+            A long time ago, in a company far, far away....
+        </section>
+
+        <section class="titles">
+            <div>
+                <p>
+                    It is a period of civil war.
+                    Data analysts, armed with
+                    Tableau Desktop, have
+                    won their first victory
+                    against the evil Enterprise
+                    Bureaucracy.
+                </p>
+
+                <p>
+                    During the meeting, Rebel
+                    analysts managed to gain
+                    access to the
+                    Bureaucracy's secret data
+                    cache, the STAR WARS API.
+                </p>
+                <p>
+                    Pursued by sinister agents
+                    of the Bureaucracy, a
+                    lowly analyst opens up the
+                    web data connector,
+                    hoping to make sweet
+                    vizzes that can save her
+                    department and restore
+                    freedom to the organization.
+                </p>
+            </div>
+        </section>
+    </div>
+</article>
+
+<section class="jumbotron text-center" style="display:none;">
   <div class="container">
     <h1 class="jumbotron-heading">Connect to Star Wars API</h1>
-    
-              <form>
-            
-            
-            
-                <p>
-    <select class="form-control" name="Resource" id="Resource">
-        <option value="">-- Resource --</option>
-        
-            <option value="People">People</option>
-        
-            <option value="Films">Films</option>
-        
-            <option value="Planets">Planets</option>
-        
-            <option value="Species">Species</option>
-        
-            <option value="Starships">Starships</option>
-        
-            <option value="Vehicles">Vehicles</option>
-        
-    </select>
-    <label class="sr-only" for="Resource">Resource</label>
-</p>
-            
-            
-            
-            
-            <div>
-                <input type="submit" value="Connect" class="btn btn-lg btn-primary btn-block" />
-            </div>
-        </form>
-
-    
+    <form>
+      <p>
+        <select class="form-control" name="Resource" id="Resource">
+          <option value="">-- Resource --</option>
+          <option value="People">People</option>
+          <option value="Films">Films</option>
+          <option value="Planets">Planets</option>
+          <option value="Species">Species</option>
+          <option value="Starships">Starships</option>
+          <option value="Vehicles">Vehicles</option>
+        </select>
+        <label class="sr-only" for="Resource">Resource</label>
+      </p>
+      <div>
+        <input type="submit" value="Connect" class="btn btn-lg btn-primary btn-block" />
+      </div>
+    </form>
   </div>
 </section>
 
