@@ -30,8 +30,7 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
    *   performed.
    */
   wdcw.setup = function setup(phase, setUpComplete) {
-    var $jumbotron = $('.jumbotron'),
-        delayShow = parseInt(jQuery('.animation .titles > div').css('animation-duration')) + parseInt(jQuery('.animation .titles > div').css('animation-delay')),
+    var delayShow = parseInt(jQuery('.animation .titles > div').css('animation-duration')) + parseInt(jQuery('.animation .titles > div').css('animation-delay')),
         crawl;
 
     if (phase === tableau.phaseEnum.interactivePhase) {
@@ -45,16 +44,16 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
 
         // In the set amount of time, show the fields.
         setTimeout(function() {
-          $jumbotron.fadeOut().fadeIn();
+          $('.jumbotron').hide().fadeIn();
         }, delayShow * 1000);
 
         // Immediately push history onto the window so connection edits don't
         // get the crawl.
-        window.history.pushState({}, '', window.location.origin + '?crawlOff=1');
+        window.history.pushState({}, '', window.location.origin + '?crawlOff');
       }
       else {
         $('.starwars').hide();
-        $jumbotron.fadeIn();
+        $('.jumbotron').fadeIn();
       }
     }
 

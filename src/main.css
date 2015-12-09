@@ -142,8 +142,8 @@ body {
 .starwars .titles > div {
     position: absolute;
     top: 100%;
-    -webkit-animation: titles 61s linear 5s;
-    animation: titles 61s linear 5s;
+    -webkit-animation: titles 35s linear 5s;
+    animation: titles 35s linear 5s;
 }
 .starwars .titles > div > p {
     margin: 1.35em 0 1.85em 0;
