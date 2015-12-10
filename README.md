@@ -52,4 +52,4 @@ You will need [node][12] and [grunt][13] installed. With that in mind:
 [11]: https://github.com/tableau-mkt/swapi-wdc/issues
 [12]: https://nodejs.org/en/
 [13]: http://gruntjs.com/getting-started#installing-the-cli
-[14]: http://tableau.github.io/webdataconnector/Simulator.html
+[14]: http://tableau.github.io/webdataconnector/Simulator.html?src=http://tableau-mkt.github.io/swapi-wdc/
