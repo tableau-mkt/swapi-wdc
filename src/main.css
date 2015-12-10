@@ -25,6 +25,8 @@ select {
 /* Ensure select option text color is black when selecting */
 select.form-control:active {
     color: #000;
+    /* Interestingly, this is required for Tableau on Windows, but not Mac */
+    background-color: initial;
 }
 
 /**
