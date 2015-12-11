@@ -90,6 +90,9 @@ h1 {
     padding-bottom: 0;
     margin-bottom: 0;
     background-color: #fff;
+    /* Ensure form is above the crawl text*/
+    position: relative;
+    z-index: 999;
 }
 
 .jumbotron p:last-child {
