@@ -14622,6 +14622,7 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
       this.cloned = this.animation.clone(true);
       this.animation.remove();
       this.animation = this.cloned;
+      $(this.animation).show();
     };
 
     return StarWarsCrawl;
