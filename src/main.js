@@ -74,21 +74,26 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
         // In the set amount of time, show the fields.
         setTimeout(function() {
           $('.jumbotron').hide().fadeIn();
+          $skipRedo.attr('href', baseUrl + window.location.pathname)
+            .text('See it again')
+            .attr('title', 'For the first time...');
         }, delayShow * 1000);
 
         // Immediately push history onto the window so connection edits don't
         // get the crawl.
         window.history.pushState({}, '', baseUrl + window.location.pathname + '?crawlOff');
-        $skipRedo.attr('href', '?crawlOff')
+        $skipRedo.hide().attr('href', '?crawlOff')
           .text('Skip')
-          .attr('title', '');
+          .attr('title', '')
+          .fadeIn();
       }
       else {
         $('.starwars').hide();
         $('.jumbotron').fadeIn();
-        $skipRedo.attr('href', baseUrl + window.location.pathname)
+        $skipRedo.hide().attr('href', baseUrl + window.location.pathname)
           .text('See it again')
-          .attr('title', 'For the first time...');
+          .attr('title', 'For the first time...')
+          .fadeIn();
       }
     }
 
