@@ -186,11 +186,17 @@ module.exports = function($, tableau, wdcw, StarWarsMeta, swapiModule) {
     }
 
     swapiModule[method](pageNumber, function (data) {
+      var processedData = [];
+
+      data.results.forEach(function shapeData(item) {
+        processedData.push(util.flattenData(item));
+      });
+
       if (data.next) {
-        registerData(data.results, pageNumber);
+        registerData(processedData, pageNumber);
       }
       else {
-        registerData(data.results);
+        registerData(processedData);
       }
     });
   };
