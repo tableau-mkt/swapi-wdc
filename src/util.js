@@ -72,8 +72,8 @@
 
       if (util.isArray(item)) {
         // Arrays are a special case and should be handled within Tableau.
-        // We transform them back into JSON.
-        item = JSON.stringify(item);
+        // We just run the toString method on them.
+        item = item.toString();
       }
       else if (typeof item === 'object') {
         parent = ancestor + key + '.';
