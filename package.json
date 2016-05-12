@@ -1,9 +1,14 @@
 {
-  "name": "star-wars-api",
-  "version": "0.0.0",
+  "name": "swapi-wdc",
+  "description": "A Tableau Web Data Connector you can use to analyze Star Wars characters, planets, vehicles, etc. using Tableau.",
+  "version": "0.1.0",
   "scripts": {
     "test": "mocha"
   },
+  "keywords": [
+    "tableau-wdc"
+  ],
+  "homepage": "https://tableau-mkt.github.io/swapi-wdc/",
   "dependencies": {
   },
   "devDependencies": {
