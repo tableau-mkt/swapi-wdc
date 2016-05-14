@@ -9,6 +9,10 @@
     "tableau-wdc"
   ],
   "homepage": "https://tableau-mkt.github.io/swapi-wdc/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tableau-mkt/swapi-wdc/"
+  },
   "dependencies": {
   },
   "devDependencies": {
